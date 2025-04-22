@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 
 import { createTheme, MantineProvider } from "@mantine/core";
 import { MobileViewContextProvider } from "@/context/MobileViewContext";
+import "@mantine/core/styles.css";
 
 const theme = createTheme({
   /** Put your mantine theme override here */

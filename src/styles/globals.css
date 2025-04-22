@@ -8,6 +8,10 @@
   --foreground: #171717;
 
   --color-main-gradient: linear-gradient(123deg, #6573B7 1.15%, #858DC6 96.62%);
+  --color-stack-clean: linear-gradient(180deg, #EAE8E3 0%, #CFD2EA 100%);
+  --color-main-blue: #435DAA;
+  --color-main-pink: #F6D5D5;
+
   
   /* Blue */
   --blue-100: #CFD2EA;
@@ -80,11 +84,17 @@
   --color-grey-600: var(--grey-600);
   --color-grey-700: var(--grey-700);
 
+  --color-main-blue: var(--color-main-blue);
+  --color-main-pink: var(--color-main-pink);
+  --color-main-gradient: var(--color-main-gradient);
+  --color-stack-clean: var(--color-stack-clean);
+
 }
 
 .bg-main-gradient {
   background-image: var(--color-main-gradient);
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
