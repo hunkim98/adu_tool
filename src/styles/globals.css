@@ -1,20 +1,94 @@
+@import url('https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro');
 @import "tailwindcss";
+
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --color-main-gradient: linear-gradient(123deg, #6573B7 1.15%, #858DC6 96.62%);
+  
+  /* Blue */
+  --blue-100: #CFD2EA;
+  --blue-200: #A8ADD7;
+  --blue-300: #858DC6;
+  --blue-400: #6573B7;
+  --blue-600: #576196;
+  --blue-700: #595D7D;
+
+  /* Pink */
+  --pink-100: #FDF4F3;
+  --pink-200: #FBECEB;
+  --pink-300: #F9E4E3;
+  --pink-400: #F8DDDC;
+  --pink-600: #C2B0B1;
+  --pink-700: #91888A;
+
+  /* Red */
+  --red-100: #FDDAD1;
+  --red-200: #F9B8AD;
+  --red-300: #F6978C;
+  --red-400: #F37870;
+  --red-600: #BF655D;
+  --red-700: #91625C;
+
+  /* Grey */
+  --grey-100: #EAE8E3;
+  --grey-200: #BDBDBC;
+  --grey-300: #8E8F90;
+  --grey-500: #4A484F;
+  --grey-600: #2A292D;
+  --grey-700: #111113;
+
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-haas: "Neue Haas Grotesk Display Pro", sans-serif;
+
+  /* --color-main-gradient: linear-gradient(180deg, #FF0000 0%, #FF7F00 25%, #FFFF00 50%, #00FF00 75%, #0000FF 100%); */
+
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-300: var(--blue-300);
+  --color-blue-400: var(--blue-400);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+
+  --color-pink-100: var(--pink-100);
+  --color-pink-200: var(--pink-200);
+  --color-pink-300: var(--pink-300);
+  --color-pink-400: var(--pink-400);
+  --color-pink-600: var(--pink-600);
+  --color-pink-700: var(--pink-700);
+
+  --color-red-100: var(--red-100);
+  --color-red-200: var(--red-200);
+  --color-red-300: var(--red-300);
+  --color-red-400: var(--red-400);
+  --color-red-600: var(--red-600);
+  --color-red-700: var(--red-700);
+
+  --color-grey-100: var(--grey-100);
+  --color-grey-200: var(--grey-200);
+  --color-grey-300: var(--grey-300);
+  --color-grey-500: var(--grey-500);
+  --color-grey-600: var(--grey-600);
+  --color-grey-700: var(--grey-700);
+
+}
+
+.bg-main-gradient {
+  background-image: var(--color-main-gradient);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #535353;
     --foreground: #ededed;
   }
 }

@@ -1,5 +1,5 @@
 import { useElementSize } from "@mantine/hooks";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export interface MobileViewContextProviderProps {
   children: React.ReactNode;
@@ -34,4 +34,8 @@ export const MobileViewContextProvider = ({
       {children}
     </MobileViewContext.Provider>
   );
+};
+
+export const useMobileViewContext = () => {
+  return useContext(MobileViewContext);
 };

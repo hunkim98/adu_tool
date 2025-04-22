@@ -7,6 +7,10 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
+        <link
+          href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro"
+          rel="stylesheet"
+        />
       </Head>
 
       <body className="antialiased">
