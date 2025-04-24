@@ -2,35 +2,33 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import MobileLayout from "@/components/Layout/MobileLayout";
 import Navbar from "@/components/Navbar";
+import CapitalStackTool from "@/components/CapitalStackTool";
+import { Box, Flex, Text } from "@mantine/core";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
+export default function HomePage() {
   return (
     <MobileLayout maxWidth={500}>
       <Navbar />
-      {/* <div
-        className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-      ></div> */}
-      <div
-        className="bg-pink-100"
-        style={{
-          fontFamily: "Neue Haas Grotesk Display Pro",
-        }}
-      >
-        hi
-      </div>
-      <div className="bg-pink-100">hi2</div>
-      <div className=" w-full h-full font-haas">TEST</div>
-      <div className="bg-pink-100">hi3</div>
+      <Flex pt={50} direction="column" gap={50} align="center">
+        {/* <Text className="font-haas text-blue-100"> */}
+        <Flex direction="column" gap={0} align={"center"}>
+          <Text className="font-haas text-blue-100">Capital</Text>
+          <Text className="font-haas text-blue-100">Stack Tool</Text>
+        </Flex>
+        {/* </Text> */}
+        <CapitalStackTool
+          width={50}
+          height={600}
+          data={[
+            {
+              "Private Equity": 100,
+              "Venture Capital": 200,
+              "Family Office": 300,
+            },
+          ]}
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        />
+      </Flex>
     </MobileLayout>
   );
 }
