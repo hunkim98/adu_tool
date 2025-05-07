@@ -25,8 +25,8 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
       justify="space-between"
       align="center"
     >
-      <LogoComponent onClick={navigateToHome} />
-      <HamburgerComponent />
+      <LogoComponent onClick={navigateToHome} className="cursor-pointer" />
+      <HamburgerComponent className="cursor-pointer" />
     </Flex>
   );
 };

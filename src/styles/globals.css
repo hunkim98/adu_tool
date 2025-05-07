@@ -7,6 +7,9 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  border-top-left-radius: var(--mantine-radius-xl);
+  border-bottom-left-radius: var(--mantine-radius-xl);
+
   --color-main-gradient: linear-gradient(123deg, #6573B7 1.15%, #858DC6 96.62%);
   --color-stack-clean: linear-gradient(180deg, #EAE8E3 0%, #CFD2EA 100%);
   --color-main-blue: #435DAA;
@@ -95,6 +98,11 @@
   background-image: var(--color-main-gradient);
 }
 
+.text-stack-clean-gradient {
+  background-image: var(--color-stack-clean);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
