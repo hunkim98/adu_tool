@@ -9,7 +9,7 @@ import Tutorial from "@/components/Tutorial";
 import Survey from "@/components/Survey";
 
 export default function HomePage() {
-  const [isTutorial, setIsTutorial] = useState(false);
+  const [isTutorial, setIsTutorial] = useState(true);
   const onClickNextTutorial = useCallback(() => {
     setIsTutorial(false);
   }, []);
