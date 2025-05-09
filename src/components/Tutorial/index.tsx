@@ -4,10 +4,14 @@ import CapitalStackTool from "../CapitalStackTool";
 import { useMobileViewContext } from "@/context/MobileViewContext";
 import NextButton from "../Button/NextButton";
 
-const Tutorial = () => {
+interface TutorialProps {
+  onNext: () => void;
+}
+
+const Tutorial = ({ onNext }: TutorialProps) => {
   const { mobileContainerWidth } = useMobileViewContext();
   return (
-    <Flex direction={"column"} px={66} align="center" gap={50} pb={80}>
+    <Flex direction={"column"} px={66} align="center" gap={50} pb={80} pt={50}>
       <Flex direction={"column"} gap={20} align="center">
         <h1 className="text-center font-haas text-4xl font-semibold text-stack-clean-gradient">
           Welcome to our <br /> Capital Stack Tool!
@@ -28,7 +32,7 @@ const Tutorial = () => {
         ]}
         margin={{ top: 5, right: 5, bottom: 5, left: 0 }}
       />
-      <NextButton isActive={true} onClick={() => {}}>
+      <NextButton isActive={true} onClick={onNext}>
         NEXT
       </NextButton>
     </Flex>
