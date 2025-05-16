@@ -10,6 +10,8 @@ interface MobileViewContextType {
   mobileContainerHeight: number;
   setMobileContainerWidth: (width: number) => void;
   setMobileContainerHeight: (height: number) => void;
+  navbarHeight: number;
+  setNavbarHeight: (height: number) => void;
 }
 
 const MobileViewContext = createContext<MobileViewContextType>(
@@ -21,7 +23,7 @@ export const MobileViewContextProvider = ({
 }: MobileViewContextProviderProps) => {
   const [mobileContainerWidth, setMobileContainerWidth] = useState(0);
   const [mobileContainerHeight, setMobileContainerHeight] = useState(0);
-
+  const [navbarHeight, setNavbarHeight] = useState(0);
   return (
     <MobileViewContext.Provider
       value={{
@@ -29,6 +31,8 @@ export const MobileViewContextProvider = ({
         mobileContainerHeight,
         setMobileContainerWidth,
         setMobileContainerHeight,
+        navbarHeight,
+        setNavbarHeight,
       }}
     >
       {children}

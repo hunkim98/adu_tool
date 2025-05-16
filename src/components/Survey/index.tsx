@@ -1,5 +1,5 @@
-import { Flex } from "@mantine/core";
-import React, { useCallback, useState } from "react";
+import { Box, Flex } from "@mantine/core";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CapitalStackTool from "../CapitalStackTool";
 import { useMobileViewContext } from "@/context/MobileViewContext";
 import XIconComponent from "@/icons/xIcon";
@@ -11,11 +11,25 @@ const GRAPH_MIN_WIDTH = 150;
 interface SurveyProps {}
 
 const Survey: React.FC<SurveyProps> = ({}) => {
-  const { mobileContainerWidth } = useMobileViewContext();
+  const { mobileContainerWidth, mobileContainerHeight, navbarHeight } =
+    useMobileViewContext();
   const [isQuestionOpen, setIsQuestionOpen] = useState(true);
   const onClickCloseQuestion = useCallback(() => {
     setIsQuestionOpen(false);
   }, []);
+  const graphRef = useRef<HTMLDivElement>(null);
+  const [graphSize, setGraphSize] = useState({
+    width: 0,
+    height: 0,
+  });
+  useEffect(() => {
+    if (graphRef.current) {
+      setGraphSize({
+        width: graphRef.current!.clientWidth,
+        height: graphRef.current!.clientHeight,
+      });
+    }
+  }, [graphRef.current]);
   return (
     <Flex direction={"row"}>
       <Flex
@@ -24,6 +38,8 @@ const Survey: React.FC<SurveyProps> = ({}) => {
         align={"center"}
         className="w-full"
         pt={50}
+        pb={50}
+        ref={graphRef}
       >
         <Flex direction="column" gap={0} align={"center"}>
           <div className="font-haas text-blue-100">Capital</div>
@@ -50,13 +66,20 @@ const Survey: React.FC<SurveyProps> = ({}) => {
       {isQuestionOpen && (
         <Flex
           direction={"column"}
+          align={"center"}
           style={{
             minWidth: mobileContainerWidth - GRAPH_MIN_WIDTH,
           }}
-          className="h-screen rounded-tl-4xl bg-gradient-to-b from-[#F6D5D5] to-[#CFD2EA]"
+          className="rounded-tl-4xl bg-gradient-to-b from-[#F6D5D5] to-[#CFD2EA]"
           w={mobileContainerWidth - GRAPH_MIN_WIDTH}
+          h={
+            mobileContainerHeight > graphSize.height + navbarHeight
+              ? `calc(100dvh - ${navbarHeight}px)`
+              : graphSize.height
+          }
           pos={"relative"}
-          pt={100}
+          pt={50}
+          pb={50}
           gap={40}
           px={40}
         >
@@ -74,10 +97,12 @@ const Survey: React.FC<SurveyProps> = ({}) => {
               onClick={onClickCloseQuestion}
             />
           </Flex>
+          <Box h={20} />
           <Question question="What is your expected total development cost?" />
           <MoneyInputAnswer
             onChange={() => {}}
             value={0}
+            className="w-full"
             placeholder="Enter your expected total development cost"
             label="Expected total development cost"
             error="Expected total development cost is required"
