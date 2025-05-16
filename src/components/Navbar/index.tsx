@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   const { ref, height } = useElementSize();
   useEffect(() => {
     setNavbarHeight(height + NAVBAR_PY * 2);
-  }, [height]);
+  }, [height, setNavbarHeight]);
   const navigateToHome = useCallback(() => {
     router.push("/");
   }, [router]);
