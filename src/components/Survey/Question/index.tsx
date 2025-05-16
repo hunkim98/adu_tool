@@ -1,5 +1,5 @@
 import { BaseQuestion, QuestionType } from "@/data/question/BaseQuestion";
-import { Flex } from "@mantine/core";
+import { Box, Flex } from "@mantine/core";
 import React from "react";
 import QuestionString from "./QuestionString";
 import MoneyInputAnswer from "../Answer/InputAnswer/MoneyInputAnswer";
@@ -16,6 +16,7 @@ const Question: React.FC<QuestionProps> = ({ question }) => {
   return (
     <Flex direction={"column"} gap={10}>
       <QuestionString question={question.question} />
+      <Box h={20} />
       {question.type === QuestionType.MONEY && (
         <MoneyInputAnswer onChange={() => {}} value={0} className="w-full" />
       )}

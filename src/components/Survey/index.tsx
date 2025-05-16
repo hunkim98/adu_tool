@@ -28,6 +28,10 @@ const Survey: React.FC<SurveyProps> = ({}) => {
   const { questionData } = useQuestionData();
   const [questionIndex, setQuestionIndex] = useState(0);
   const onClickNext = useCallback(() => {
+    if (questionIndex === questionData.length - 1) {
+      // TODO: submit the survey
+      return;
+    }
     setQuestionIndex(questionIndex + 1);
   }, [questionIndex]);
   useEffect(() => {

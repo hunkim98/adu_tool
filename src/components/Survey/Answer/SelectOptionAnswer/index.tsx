@@ -13,7 +13,7 @@ function SelectOptionAnswer({
   options,
 }: SelectOptionAnswerProps) {
   return (
-    <Flex direction={"column"} gap={30} pt={50}>
+    <Flex direction={"column"} gap={30}>
       {options.map((option) => (
         <Flex direction={"row"} gap={10} onClick={() => onChange(option)}>
           <Box
