@@ -18,11 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
     setNavbarHeight(height + NAVBAR_PY * 2);
   }, [height]);
   const navigateToHome = useCallback(() => {
-    if (process.env.NODE_ENV === "production") {
-      router.push("/adu_tool");
-    } else {
-      router.push("/");
-    }
+    router.push("/");
   }, [router]);
   return (
     <Flex

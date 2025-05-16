@@ -3,9 +3,12 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import CapitalStackTool from "../CapitalStackTool";
 import { useMobileViewContext } from "@/context/MobileViewContext";
 import XIconComponent from "@/icons/xIcon";
-import Question from "./Question";
+import QuestionString from "./Question/QuestionString";
 import MoneyInputAnswer from "./Answer/InputAnswer/MoneyInputAnswer";
 import NextButton from "../Button/NextButton";
+import useQuestionData from "@/hooks/useQuestionData";
+import Question from "./Question";
+import { QuestionStage } from "@/data/question/BaseQuestion";
 const GRAPH_MIN_WIDTH = 150;
 
 interface SurveyProps {}
@@ -22,6 +25,11 @@ const Survey: React.FC<SurveyProps> = ({}) => {
     width: 0,
     height: 0,
   });
+  const { questionData } = useQuestionData();
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const onClickNext = useCallback(() => {
+    setQuestionIndex(questionIndex + 1);
+  }, [questionIndex]);
   useEffect(() => {
     if (graphRef.current) {
       setGraphSize({
@@ -30,6 +38,11 @@ const Survey: React.FC<SurveyProps> = ({}) => {
       });
     }
   }, [graphRef.current]);
+
+  if (questionData.length === 0) {
+    return null;
+  }
+
   return (
     <Flex direction={"row"}>
       <Flex
@@ -47,7 +60,11 @@ const Survey: React.FC<SurveyProps> = ({}) => {
         </Flex>
         <Flex direction="column" gap={0} align={"center"}>
           <div className="font-haas text-blue-100 font-bold">
-            Pre-Construction
+            {/* Pre-Construction */}
+            {questionData[questionIndex].stage ===
+            QuestionStage.PRE_CONSTRUCTION
+              ? "Pre-Construction"
+              : "Post-Construction"}
           </div>
         </Flex>
         <CapitalStackTool
@@ -98,16 +115,8 @@ const Survey: React.FC<SurveyProps> = ({}) => {
             />
           </Flex>
           <Box h={20} />
-          <Question question="What is your expected total development cost?" />
-          <MoneyInputAnswer
-            onChange={() => {}}
-            value={0}
-            className="w-full"
-            placeholder="Enter your expected total development cost"
-            label="Expected total development cost"
-            error="Expected total development cost is required"
-          />
-          <NextButton isActive={true} onClick={() => {}}>
+          <Question question={questionData[questionIndex]} />
+          <NextButton isActive={true} onClick={onClickNext}>
             Next
           </NextButton>
         </Flex>
